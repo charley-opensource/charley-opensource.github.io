@@ -1,129 +1,124 @@
-# Mes contributions open source
+# Welcome to my **open-source contributions page** 🐧🌍
 
-- Nom : **Geoffroy**
-- Prénom : **Charley**
-- Classe : **DO5 2025**
-- Encadrant : **M. BERRY**
-- Github Pages : [charley-opensource](https://charley-opensource.github.io/)
-
-Ce document a pour objectif de présenter mes différentes contribution open source auxquelles j'ai participé. Il est divisé en deux sections principales : Keycloak et Chess-tui game. Chaque section contient une liste de mes contributions, avec une brève description de chaque contribution. Les contributions sont classées par type (BUG, FEATURE, etc.) et sont accompagnées d'une capture d'écran de la PR correspondante.
-
-## Table des matières
-
->- [Keycloak](#keycloak)
->   * Ma liste de contributions
->      + [🟠 BUG :  Problème de la CI dû à la gestion des doublons de noms de groupe](#-bug-problème-de-la-ci-dû-à-la-gestion-des-doublons-de-noms-de-groupe)
->      + [🟠 BUG : Problème de filtrage de statut clé dans l'onglet KeysListTab](#-bug-problème-de-filtrage-de-statut-clé-dans-longlet-keyslisttab)
->- [Chess-tui game](#chess-tui-game)
->   * Ma liste de contributions
->      + [🟠 BUG : Empêcher la selection d'une pièce qui n'a pas de mouvement possible](#-bug-empêcher-la-selection-dune-pièce-qui-na-pas-de-mouvement-possible)
->      + [🟢 FEATURE  Ajouter une aide contextuelle des commandes en jeu](#-feature-ajouter-une-aide-contextuelle-des-commandes-en-jeu)
+- **👨‍🎓 Full Name**: Charley GEOFFROY 
+- **📧 Mail:** [charley.geoffroy@protonmail.com](mailto:charley.geoffroy@protonmail.com)  
+- **🏫 School:** [Polytech Montpellier](https://www.polytech.umontpellier.fr/)  
+- **🛠️ Specialization:** [Development and Operational Deployment (DevOps)](https://www.polytech.umontpellier.fr/formation/cycle-ingenieur/devops)  
+- **🌍 GitHub Pages:** [charley-opensource](https://charley-opensource.github.io/)  
 
 
-## Keycloak
+Hey there 👋 and welcome to my **open-source contributions page**! I’m **Charley GEOFFROY**, a final-year engineering student with a deep passion for both space and software development. Currently, I’m working at **Groundspace**, a company near Montpellier that specializes in radio frequency analysis tools for satellite monitoring. This position allows me to merge my love for coding with my fascination for space technology—an exciting journey at the intersection of two incredible fields! 🚀💻
 
-![Keycloak](./img/keycloak.png)
+This document aims to present my various open-source contributions. It is divided into two main sections: Keycloak and Chess-tui game. Each section contains a list of my contributions, along with a brief description of each one. Contributions are categorized by type (BUG, FEATURE, etc.) and are accompanied by a screenshot of the corresponding pull request (PR).
 
-[Keycloack](https://github.com/keycloak/keycloak) est un serveur d'identité et de gestion d'accès open source, qui permet aux applications modernes de sécuriser facilement leurs services. Il est développé par [Red Hat](https://www.redhat.com/fr) et est basé sur des standards ouverts tels que OAuth 2.0, OpenID Connect et SAML. Le projet cumule un total de 25,4k ⭐ (en date du : 20/02/2025) sur GitHub.
+## Table of Contents
 
-### Ma liste de [contributions](https://github.com/keycloak/keycloak/pulls?q=is%3Apr+is%3Aclosed+author%3Acharley04310) 
-
-
-J'ai eu l'occasion de proposer quelques contributions à ce projet open source. Voici une liste de mes contributions :
-
-![contribution_keycloack](./img/pr_keycloack_list.png)
-
-#### 🟠 [BUG](https://github.com/keycloak/keycloak/pull/34724) :  Problème de la CI dû à la gestion des doublons de noms de groupe
-
-![Issues](./img/pr_desc_keycloack_1.png)
-
-
-Cette [pull request (PR)](https://github.com/keycloak/keycloak/pull/34724/files) modifie des tests end-to-end (E2E) et la page des groupes dans l'interface admin de Keycloak. Voici les principales étapes :
-
-1. **Ajout d'un message d'erreur pour les groupes dupliqués** : Une constante `duplicatedGroupErrorMessage` a été ajoutée pour stocker les messages d'erreur spécifiques à la création de groupes en double.
-
-2. **Mise à jour des tests E2E** :
-   - Lors de la création de groupes avec des noms en double, les tests ont été mis à jour pour vérifier les nouveaux messages d'erreur définis dans `duplicatedGroupErrorMessage`.
-   - Un test précédemment désactivé (skip) a été réactivé pour vérifier la création échouée de groupes avec des noms dupliqués.
-
-3. **Modification de la méthode `assertNotificationCouldNotCreateGroupWithDuplicatedName`** :
-   - La méthode a été modifiée pour prendre un second argument `errorMessage`, permettant de vérifier les messages d'erreur spécifiques lors de la création de groupes en double.
-
-En résumé, cette PR améliore la gestion et la vérification des messages d'erreur lors de la création de groupes dupliqués dans les tests E2E et dans la page des groupes de l'interface admin de Keycloak.
-
-
-#### 🟠 [BUG](https://github.com/keycloak/keycloak/pull/34721) : Problème de filtrage de statut clé dans l'onglet KeysListTab 
-
-![Issues](./img/pr_desc_keycloack_2.png)
-
-Cette [pull request (PR)](https://github.com/keycloak/keycloak/pull/34721/files) corrige un problème de filtrage des clés dans l'onglet `KeysListTab` de l'interface admin de Keycloak. Voici les principales étapes :
-
-
-1. **Ajout de `useMemo` pour optimiser le filtrage des données :**
-   - `useMemo` a été ajouté en plus de `useState` pour améliorer les performances lors du filtrage des données de clés.
-
-2. **Ajout d'un état `filter` pour les options de filtrage :**
-   - Un nouvel état `filter` a été introduit, initialisé avec la première option des `FILTER_OPTIONS`.
-
-3. **Utilisation de `useMemo` pour le filtrage des clés :**
-   - `useMemo` est utilisé pour filtrer les `keyData` en fonction de l'état `filter` sélectionné.
-
-4. **Modification de l'initialisation de `keyData` et `filteredKeyData` :**
-   - Les états `keyData` et `filteredKeyData` sont initialisés à des tableaux vides.
-
-5. **Simplification du composant `SelectFilter` :**
-   - Le composant `SelectFilter` a été simplifié pour mettre à jour directement l'état `filter` au lieu de `filteredKeyData`.
-
-En résumé, cette PR améliore l'optimisation et la gestion du filtrage des clés dans la page des clés de l'interface admin de Keycloak.
+> 1. [Keycloak](#1-keycloak)  
+>    * 1.1 🟠 BUG: CI issue due to duplicate group names
+>    * 1.2 🟠 BUG: Key status filtering issue in the KeysListTab
+> 2. [Chess-tui game](#2-chess-tui-game)  
+>    * 2.1 🟠 BUG: Prevent selecting a piece with no possible moves
+>    * 2.2 🟢 FEATURE: Add contextual command help in-game
 
 ---
 
-## Chess-tui game
+## 1. Keycloak
+
+![Keycloak](./img/keycloak.png)
+
+[Keycloak](https://github.com/keycloak/keycloak) is an open-source identity and access management server that enables modern applications to secure their services easily. It is developed by [Red Hat](https://www.redhat.com) and is based on open standards such as OAuth 2.0, OpenID Connect, and SAML. The project has accumulated a total of **25.4k ⭐** on GitHub (as of 20/02/2025).
+
+#### Keycloak : My [Contributions](https://github.com/keycloak/keycloak/pulls?q=is%3Apr+is%3Aclosed+author%3Acharley04310) List  
+
+I had the opportunity to contribute to this open-source project. Here is a list of my contributions:
+
+![contribution_keycloak](./img/pr_keycloack_list.png)
+
+### 1.1 🟠 [BUG](https://github.com/keycloak/keycloak/pull/34724): CI Issue Due to Duplicate Group Names 
+
+![Issues](./img/pr_desc_keycloak_1.png)
+
+This [pull request (PR)](https://github.com/keycloak/keycloak/pull/34724/files) improves end-to-end (E2E) tests and the groups page in the Keycloak admin interface. Here are the key steps:
+
+1. **Added an error message for duplicate groups:**  
+   - A `duplicatedGroupErrorMessage` constant was introduced to store specific error messages for duplicate group creation.  
+
+2. **Updated E2E tests:**  
+   - Tests were modified to check the new error messages when attempting to create duplicate groups.  
+   - A previously skipped test was re-enabled to verify failed creation attempts for duplicate group names.  
+
+3. **Modified `assertNotificationCouldNotCreateGroupWithDuplicatedName` method:**  
+   - The method was updated to take a second argument, `errorMessage`, to validate error messages for duplicate group names.  
+
+---
+
+### 1.2 🟠 [BUG](https://github.com/keycloak/keycloak/pull/34721): Key Status Filtering Issue in the `KeysListTab`  
+
+![Issues](./img/pr_desc_keycloak_2.png)
+
+This [pull request (PR)](https://github.com/keycloak/keycloak/pull/34721/files) fixes an issue with key filtering in the `KeysListTab` of Keycloak’s admin interface. Key improvements:
+
+1. **Added `useMemo` for optimized filtering:**  
+   - `useMemo` was introduced alongside `useState` to improve filtering performance.  
+
+2. **Introduced a `filter` state for filtering options:**  
+   - A new `filter` state was added, initialized with the first option in `FILTER_OPTIONS`.  
+
+3. **Used `useMemo` for key filtering:**  
+   - `useMemo` now filters `keyData` based on the selected `filter` state.  
+
+4. **Updated `keyData` and `filteredKeyData` initialization:**  
+   - These states are now initialized as empty arrays.  
+
+5. **Simplified the `SelectFilter` component:**  
+   - It now directly updates the `filter` state instead of modifying `filteredKeyData`.  
+
+---
+
+## 2. Chess-tui Game
 
 ![Chess-tui](./img/chess.png)
 
-[Chess-tui](https://github.com/thomas-mauran/chess-tui) est un jeu d'échecs simple que vous pouvez jouer depuis votre terminal. Il prend en charge un mode local à deux joueurs, un mode multijoueur en ligne et la possibilité de jouer contre n'importe quel moteur d'échecs compatible UCI. Le projet cumule un total de 600 ⭐ (en date du : 20/02/2025) sur GitHub et a été créé par [Thomas Mauran](https://github.com/thomas-mauran), étudiant en informatique en dernière année de l'école d'ingénieurs Polytech Montpellier.
+[Chess-tui](https://github.com/thomas-mauran/chess-tui) is a simple chess game playable directly in the terminal. It supports local two-player mode, online multiplayer, and the ability to play against any UCI-compatible chess engine. The project has accumulated **600 ⭐** on GitHub (as of 20/02/2025) and was created by [Thomas Mauran](https://github.com/thomas-mauran), a final-year computer science student at Polytech Montpellier.
 
-### Ma liste de [contributions](https://github.com/thomas-mauran/chess-tui/issues?q=is%3Aissue%20state%3Aclosed%20author%3Acharley04310%20) 
+#### Chess-tui : My [Contributions](https://github.com/thomas-mauran/chess-tui/issues?q=is%3Aissue%20state%3Aclosed%20author%3Acharley04310) List  
 
-J'ai eu l'occasion de proposer quelques améliorations à ce projet open source. Voici une liste de mes contributions :
-
-
+I had the opportunity to contribute improvements to this open-source project. Here is a list of my contributions:
 
 ![Issues](./img/issues_chess.png)
 
-
-#### 🟠 [BUG](https://github.com/thomas-mauran/chess-tui/issues/44) : Empêcher la selection d'une pièce qui n'a pas de mouvement possible
+### 2.1 🟠 [BUG](https://github.com/thomas-mauran/chess-tui/issues/44): Prevent Selecting a Piece with No Possible Moves
 
 ![Issues](./img/issues_chess_1.png)
 
-Cette [PULL REQUEST](https://github.com/thomas-mauran/chess-tui/pull/45)  modifie la logique de sélection de pièces sur le plateau d'échecs dans l'application Chess TUI. Voici les principales étapes :
+This [pull request (PR)](https://github.com/thomas-mauran/chess-tui/pull/45) fixes the piece selection logic in Chess TUI. Key changes:
 
-Ajout d'une vérification avant la sélection d'une pièce : Du code a été ajouté pour vérifier si la pièce sur la cellule peut se déplacer avant de la sélectionner.
+1. **Added a verification before selecting a piece:**  
+   - Code was added to check whether the selected piece can move before allowing its selection.  
 
-1. **Mise à jour de la méthode de sélection de cellule :**
+2. **Updated cell selection method:**  
+   - The `is_cell_selected` method was updated to validate if the selected piece has valid moves. If not, the selection is canceled.  
 
-- L'appel de la  méthode `is_cell_selected` a été mise à jour pour vérifier si la pièce sur la cellule sélectionnée peut se déplacer. Si la pièce ne peut pas se déplacer, la sélection est annulée.
+---
 
+### 2.2 🟢 [FEATURE](https://github.com/thomas-mauran/chess-tui/issues/42): Add Contextual Command Help In-Game 
 
-
-####  🟢 [FEATURE](https://github.com/thomas-mauran/chess-tui/issues/42)  Ajouter une aide contextuelle des commandes en jeu
-
-![Issues](./img/issues_chess_2.png)
+![Issues](./img/issues_chess_2.png)  
 ![PR_description](./img/pr_desc_chess_2.png)
 
-Cette [pull request (PR)](https://github.com/thomas-mauran/chess-tui/pull/43/files) modifie l'affichage des contrôles de jeu dans le popup d'aide de l'interface utilisateur du jeu d'échecs. Voici les principales étapes :
+This [pull request (PR)](https://github.com/thomas-mauran/chess-tui/pull/43/files) improves the in-game help popup by enhancing the display of game controls. Key updates:
 
-1. **Modification de l'affichage des contrôles de jeu :**
-   - Les lignes utilisant `vec![]` pour formater le texte ont été remplacées par des chaînes de caractères simples.
+1. **Modified the display of game controls:**  
+   - `vec![]` formatted text was replaced with simple string literals.  
 
-2. **Ajout de nouvelles instructions de jeu :**
-   - Ajout de l'instruction "SPACE_BAR: Select a piece".
-   - Ajout de l'instruction "ESCAPE: Deselect a piece".
+2. **Added new game instructions:**  
+   - Added "SPACE_BAR: Select a piece".  
+   - Added "ESCAPE: Deselect a piece".  
 
-3. **Corrections mineures de formatage :**
-   - Les titres "Game controls:" et "Color codes:" utilisent maintenant des chaînes de caractères simples.
+3. **Minor formatting corrections:**  
+   - Titles such as "Game controls:" and "Color codes:" now use simpler string formats.  
 
-En résumé, cette PR améliore la lisibilité et enrichit les instructions des contrôles de jeu dans le popup d'aide de l'interface utilisateur du jeu d'échecs.
+ 
 
+In summary, this PR improves readability and enhances the game control instructions in the help popup.
 
